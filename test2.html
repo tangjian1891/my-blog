@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Function.prototype.fakeCall = function (obj, ...args) {
+        // this 就是调用的函数对象，我们需要放到obj上，并且还不能影响别的key，所以我们用Symbol做
+        const key = Symbol("key");
+        obj[key] = this;
+        let result = obj[key](...args);
+        console.log(obj);
+        delete obj[key];
+        return result;
+      };
+
+      let obj = {
+        age: "20",
+      };
+      function foo(arg1) {
+        console.log(this.age);
+        return arg1;
+      }
+
+      let result = foo.fakeCall(obj, "arg1", "arg2");
+
+      console.log("最后值啊", result); //可以收到参数了
+    </script>
+  </body>
+</html>
