@@ -10,6 +10,7 @@ export default defineConfig({
     nav: [
       { text: "home", link: "/" },
       { text: "css", link: "/css/" },
+      { text: "node", link: "/node/" },
       { text: "算法", link: "/算法/" },
       { text: "设计模式", link: "/设计模式" },
       { text: "手写实现", link: "/手写实现" },
@@ -28,6 +29,14 @@ export default defineConfig({
           text:"css概述",
           items:[
             {text:"盒模型",link:"/css/box-model"}
+          ]
+        }
+      ],
+      "/node/":[
+        {
+          text:"api",
+          items:[
+            { text: "常见api", link: "/node/api" },
           ]
         }
       ],
